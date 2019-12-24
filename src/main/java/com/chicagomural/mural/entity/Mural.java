@@ -7,8 +7,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name="mural_directory")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Mural {
 	
 	@Id
@@ -61,15 +64,13 @@ public class Mural {
 	@Column(name="longitude")
 	private String longitude;
 	
-	@Column(name="point")
-	private String point;
 	
 	public Mural() {}
 
 	public Mural(Integer muralRegestrationId, String artistCredit, String artworkTitle, String media,
 			String yearInstalled, String yearRestored, String locationDescription, String streetAddress, String zip,
 			String ward, String communityAreaNumber, String affiliatedOrCommissioning, String descriptionOfArtWork,
-			String latitude, String longitude, String point) {
+			String latitude, String longitude) {
 		this.muralRegestrationId = muralRegestrationId;
 		this.artistCredit = artistCredit;
 		this.artworkTitle = artworkTitle;
@@ -85,7 +86,6 @@ public class Mural {
 		this.descriptionOfArtWork = descriptionOfArtWork;
 		this.latitude = latitude;
 		this.longitude = longitude;
-		this.point = point;
 	}
 
 	public Integer getId() {
@@ -216,14 +216,6 @@ public class Mural {
 		this.longitude = longitude;
 	}
 
-	public String getPoint() {
-		return point;
-	}
-
-	public void setPoint(String point) {
-		this.point = point;
-	}
-
 	@Override
 	public String toString() {
 		return "Mural [id=" + id + ", muralRegestrationId=" + muralRegestrationId + ", artistCredit=" + artistCredit
@@ -231,9 +223,10 @@ public class Mural {
 				+ ", yearRestored=" + yearRestored + ", locationDescription=" + locationDescription + ", streetAddress="
 				+ streetAddress + ", zip=" + zip + ", ward=" + ward + ", communityAreaNumber=" + communityAreaNumber
 				+ ", affiliatedOrCommissioning=" + affiliatedOrCommissioning + ", descriptionOfArtWork="
-				+ descriptionOfArtWork + ", latitude=" + latitude + ", longitude=" + longitude + ", point=" + point
-				+ "]";
+				+ descriptionOfArtWork + ", latitude=" + latitude + ", longitude=" + longitude + "]";
 	}
+	
+	
 	
 	
 
