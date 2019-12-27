@@ -4,10 +4,9 @@ $(document).ready(function() {
 		var muralRegestrationId = searchParams.get('muralRegestrationId');
 		
 	    $.ajax({
-	        url: "http://localhost:8080/mural/details/" + muralRegestrationId
+	        url: "/mural/details/" + muralRegestrationId
 	    }).then(function(data) {
 	    	setDescriptionDetails(data);
-	    	
 	    });
 	}
     

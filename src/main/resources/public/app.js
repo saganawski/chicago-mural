@@ -1,7 +1,7 @@
 $(document).ready(function() {
 	
     $.ajax({
-        url: "http://localhost:8080/murals"
+        url: "/murals"
     }).then(function(data) {
     	setCards(data._embedded.murals)
     	
