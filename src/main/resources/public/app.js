@@ -9,7 +9,6 @@ $(document).ready(function() {
     
     function setCards(murals){
     	for(let mural of murals){
-    		
     		var html = "<div class='col s12 l4'>\n"
     		+ "<div class='card meduim'>\n"
     		+ "<div class='card-image'>\n"
@@ -21,17 +20,14 @@ $(document).ready(function() {
     		+ "<p>"+ mural.streetAddress +"</p>\n"
     		+ "</div>\n"
     		+ "<div class='card-action'>\n"
-    		+ "<a href='#'>More Details</a>\n"
+    		+ "<a href='/mural/mural-details.html?muralRegestrationId="+ mural.muralRegestrationId + "'>More Details</a>\n"
     		+ "</div>\n"
     		+ "</div>\n"
     		+ "</div>"
-    		
     		$('#mural-card').append(html);
     		
     	}
     }
-    
-    
     
     // colopse links to hamburger in mobile
     $('.sidenav').sidenav();

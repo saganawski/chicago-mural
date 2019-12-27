@@ -1,13 +1,10 @@
 $(document).ready(function() {
-	
 	let searchParams = new URLSearchParams(window.location.search);
-	
-	if(searchParams.has('muralId')){
-		var muralId = searchParams.get('muralId');
+	if(searchParams.has('muralRegestrationId')){
+		var muralRegestrationId = searchParams.get('muralRegestrationId');
 		
 	    $.ajax({
-	    	//TODO new route
-	        url: "http://localhost:8080/murals/" + muralId
+	        url: "http://localhost:8080/mural/details/" + muralRegestrationId
 	    }).then(function(data) {
 	    	setDescriptionDetails(data);
 	    	
@@ -18,9 +15,8 @@ $(document).ready(function() {
 		title = mural.artworkTitle;
 		artist = mural.artistCredit;
 		commissioned = mural.affiliatedOrCommissioning;
-		description = mural.descriptionOfArtwork;
+		description = mural.descriptionOfArtWork;
 		address = mural.streetAddress;
-		
 		// find and set text
 		$('#title').append(" " + title);
 		$('#artist').append(" " + artist);
