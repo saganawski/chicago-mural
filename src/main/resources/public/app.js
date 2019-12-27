@@ -1,5 +1,7 @@
 $(document).ready(function() {
 	
+	$('#nav').load("_nav.html");
+	
     $.ajax({
         url: "/murals"
     }).then(function(data) {
