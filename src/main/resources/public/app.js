@@ -5,8 +5,8 @@ $(document).ready(function() {
     $.ajax({
         url: "/murals"
     }).then(function(data) {
-    	setCards(data._embedded.murals)
-    	
+    	setCards(data._embedded.murals);
+    	setPaganation(data);
     });
     
     function setCards(murals){
@@ -31,7 +31,74 @@ $(document).ready(function() {
     	}
     }
     
+    function setPaganation(paganation){
+    	pageNumber = paganation.page.number;
+    	pageCount = paganation.page.totalPages;
+    	for(var i=1; i <= pageCount; i++){
+    		//set left chevron
+    		if(i === 1){
+    			$('#pagination').append('<li id="left-chevron" class="waves-effect"><a href="#!"><i class="material-icons">chevron_left</i></a></li>');
+    		}
+    		//set normal page
+    		$('#pagination').append('<li class="waves-effect"><a href="#!">'+ i +'</a></li>');
+    		//set right chevron
+    		if(i === pageCount){
+    			$('#pagination').append('<li id="right-chevron" class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>');
+    		}
+    		
+    		//set ative class
+    		setPaganationClassAttributes(pageNumber, pageCount);
+    	}
+    }
+    	// set active class info
+    function setPaganationClassAttributes(pageNumber, pageCount){
+    	// highlight active page
+    	$('#pagination').find('li').find('a').eq(pageNumber + 1).parent("li").removeClass("waves-effect").addClass("active");
+    	
+    	// dissable left chevron
+    	if(pageNumber === 0){
+    		$('#left-chevron').addClass("disabled");
+    	}    	
+    	//dissable right chenvron
+    	if(pageNumber === pageCount){
+    		$('#right-chevron').addClass("disabled");
+    	}
+    		
+    }
+
+    //function to handle paganation
+    
     // colopse links to hamburger in mobile
     $('.sidenav').sidenav();
     
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
