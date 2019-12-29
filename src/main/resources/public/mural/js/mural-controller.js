@@ -1,4 +1,7 @@
 $(document).ready(function() {
+	
+	$('#nav').load("../../_nav.html");
+	
 	let searchParams = new URLSearchParams(window.location.search);
 	if(searchParams.has('muralRegestrationId')){
 		var muralRegestrationId = searchParams.get('muralRegestrationId');
